@@ -7,4 +7,6 @@ Note that the images were resized to (64,64).
 
 ## Training (4500 epochs)
 ![samples_imgs](https://github.com/Oowkrap/W-GAN/tree/master/imgs/samples_imgs.png)
+
+## Loss
 ![loss](https://github.com/Oowkrap/W-GAN/tree/master/imgs/loss.png)
