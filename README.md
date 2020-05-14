@@ -13,3 +13,10 @@ Note that the images were resized to (64,64).
 
 ## Loss
 ![loss](https://github.com/Oowkrap/W-GAN/blob/master/imgs/loss.png)
+
+
+
+
+## Sources and inspiration
+https://github.com/martinarjovsky/WassersteinGAN
+https://github.com/eriklindernoren/PyTorch-GAN
