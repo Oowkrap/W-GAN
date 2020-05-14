@@ -19,4 +19,5 @@ Note that the images were resized to (64,64).
 
 ## Sources and inspiration
 https://github.com/martinarjovsky/WassersteinGAN
+
 https://github.com/eriklindernoren/PyTorch-GAN
