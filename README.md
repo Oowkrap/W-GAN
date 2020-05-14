@@ -15,9 +15,20 @@ Note that the images were resized to (64,64).
 ![loss](https://github.com/Oowkrap/W-GAN/blob/master/imgs/loss.png)
 
 
+# W-GAN - GP
+Pytorch implementation of [Improved Training of Wasserstein GANs](https://arxiv.org/abs/1704.00028) by Gulrajani et al.
+## Examples
+
+## Training
+
+## Loss
+
+
 
 
 ## Sources and inspiration
 https://github.com/martinarjovsky/WassersteinGAN
 
 https://github.com/eriklindernoren/PyTorch-GAN
+
+https://github.com/EmilienDupont/wgan-gp
