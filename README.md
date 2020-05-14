@@ -6,7 +6,7 @@ W-GAN for Randomly choosen celebrity (10 picture)
 Note that the images were resized to (64,64).
 
 ## Training (4500 epochs)
-![samples_imgs](https://github.com/Oowkrap/W-GAN/blob/master/imgs/samples_imgs.png)
+![samples_imgs](https://github.com/Oowkrap/W-GAN/blob/master/imgs/sample_imgs.png)
 
 ## Loss
 ![loss](https://github.com/Oowkrap/W-GAN/blob/master/imgs/loss.png)
