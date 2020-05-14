@@ -1,2 +1,2 @@
 # W-GAN
-W-GAN cifar10
+W-GAN for Randomly choosen celebrity (10 picture)
