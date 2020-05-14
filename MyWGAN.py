@@ -20,7 +20,6 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch
 
-
 from models.dcgan import Generator, Discriminator
 
 os.makedirs("images", exist_ok=True)
@@ -39,8 +38,6 @@ ndf = 128 #generator filter
 beta1 = 0.5 # Using Adam
 clip_value = 0.01
 
-n = batch_size
-
 cuda = True if torch.cuda.is_available() else False
 
 device = 'cuda:0'
@@ -53,14 +50,6 @@ trans = transforms.Compose([
     transforms.Scale(64),
     transforms.ToTensor(),
     transforms.Normalize(mean = (0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5))])
-
-def imshow(img):
-    img = img.squeeze(0)
-    img = img / 2 + 0.5     # unnormalize
-    npimg = img.numpy()
-    plt.imshow(np.transpose(npimg, (1, 2, 0)))
-    plt.show()
-
 
 def weights_init(m):
     classname = m.__class__.__name__
@@ -78,56 +67,26 @@ D = Discriminator(ndf, channels).cuda(device)
 G.apply(weights_init)
 D.apply(weights_init)
 
-
-#os.makedirs("C:/Users/우리집/MyGAN/data/cifar10", exist_ok=True)
-#dataloader = torch.utils.data.DataLoader(
-#    datasets.CIFAR10(
-#        "C:/Users/우리집/MyGAN/data/cifar10",
-#        train=False,download=True, transform=trans), batch_size=batch_size, shuffle=True)
-
 dataloader = torch.utils.data.DataLoader(dataset=torchvision.datasets.ImageFolder(
                                             root ='C:/Users/우리집/MyWGAN/images',
                                             transform = trans),batch_size = batch_size )
 
-
-
-
-## When RMSprop
 Optimizer_D = torch.optim.RMSprop(D.parameters(), lr=lr)
 Optimizer_G = torch.optim.RMSprop(G.parameters(), lr=lr)
-## When ADAM
 # Optimizer_G = torch.optim.Adam(G.parameters(),lr=lr, betas=(beta1, 0.999))
 # Optimizer_D = torch.optim.Adam(D.parameters(),lr=lr, betas=(beta1, 0.999))
-
-#test_noise = noise(n)
-
 
 G_losses = []
 D_losses = []
 images = []
 
-
 input = torch.Tensor(batch_size, 3, img_size, img_size)
 noise = torch.Tensor(batch_size, latent_dim, 1, 1)
 fixed_noise = torch.Tensor(batch_size, latent_dim, 1, 1).normal_(0,1).cuda()
 
-
 Tensor = torch.cuda.FloatTensor if cuda else torch.FloatTensor
 
 batches_done = 0
-
-
-'''
-for i in range(10):
-    t = i
-    inte = ((t * 0.1) * inter[0]) + ((1 - t * 0.1) * inter[3])
-    inte = inte.data.mul(0.5).add(0.5)
-    inters.append(to_image(inte))
-    imshow(inte)
-
-imageio.mimsave('interpolate.gif', [np.array(i) for i in inters])
-
-'''
 
 for epoch in range(n_epochs):
 
@@ -168,7 +127,6 @@ for epoch in range(n_epochs):
             plt.savefig('loss.png')
             plt.show()            
             
-
     if epoch % 5 == 0:
 
         img = G(fixed_noise).detach().cpu()
@@ -186,49 +144,7 @@ for epoch in range(n_epochs):
             fake.data = fake.data.mul(0.5).add(0.5)
             vutils.save_image(fake.data, '{0}/fake_samples_{1}.png'.format('samples', batches_done))    
     batches_done += 1
-   
-    
     
 print('Training Finished')
 torch.save(G.state_dict(), 'cifar10_generator.pth')
 torch.save(D.state_dict(), 'cifar10_discriminator.pth')
-        
-        
-
-        
-        
-        
-        
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
