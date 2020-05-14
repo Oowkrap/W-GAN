@@ -10,11 +10,6 @@ import torch.nn as nn
 import torchvision.datasets as dsets
 import torchvision.utils as vutils
 import torchvision.transforms as transforms
-from IPython import display
-from torch.autograd import Variable
-
-
-
 
 class Generator(nn.Module):
     def __init__(self, latent_dim, ngf, channels):
@@ -74,17 +69,3 @@ class Discriminator(nn.Module):
     def forward(self, input):
         output = self.main(input)
         return output.view(-1, 1).squeeze(1)
-    
-
-    
-    
-    
-    
-        
-        
-                
-
-                
-                
-            
-            
